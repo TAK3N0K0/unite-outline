@@ -1506,7 +1506,7 @@ function! s:find_outline_buffers(src_bufnr)
   while bufnr <= bufnr('$')
     if bufwinnr(bufnr) > 0
       try
-        " NOTE: This code depands on the current implementation of unite.vim.
+        " NOTE: This code depends on the current implementation of unite.vim.
         if s:is_unite_buffer(bufnr)
           let unite = getbufvar(bufnr, 'unite')
           let outline_source = s:Unite_find_outline_source(unite)
@@ -1528,11 +1528,7 @@ function! s:find_outline_buffers(src_bufnr)
 endfunction
 
 function! s:is_unite_buffer(bufnr)
-  if unite#is_win()
-    return (bufname(a:bufnr) =~# '^\[unite\]')
-  else
-    return (bufname(a:bufnr) =~# '^\*unite\*')
-  endif
+  return (bufname(a:bufnr) =~# '^\[unite\]')
 endfunction
 
 function! s:Unite_find_outline_source(unite)
